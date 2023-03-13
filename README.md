@@ -53,5 +53,5 @@
 
 ## 3.사용예
 
-- [사용 예](http://javaf.kr/inc/test/_test_javafslider.php){:target="_blank"}
+- <a hrerf="http://javaf.kr/inc/test/_test_javafslider.php" target="_blank">사용 예 (javaf.kr)</a>
   
