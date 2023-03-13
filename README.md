@@ -52,7 +52,6 @@
 |animation|String|slide|slide: slide, fade : fade|
 
 ## 3.사용예
-~~~
-- [셈플코드](http:http://javaf.kr/inc/test/_test_javafslider.php)
-~~~
+
+- [사용예 (javaf.kr)](http://javaf.kr/inc/test/_test_javafslider.php)
   
