@@ -53,5 +53,5 @@
 
 ## 3.사용예
 
-- [사용 예(javaf.kr)] (http://javaf.kr/inc/test/_test_javafslider.php")
+- [사용 예(javaf.kr)](http://javaf.kr/inc/test/_test_javafslider.php")
   
