@@ -1,11 +1,12 @@
 <h1>javafSlider</h1>
 <ul>
-    <li>javaScript 함수를 생성하여 슬라이더 효과를 구현하는 JQuery Libray/li>
+    <li>javaScript 함수를 생성하여 슬라이더 효과를 구현하는 JQuery Libray</li>
     <li><a href="">sample 제공<a></li>
 </ul>
 <h2>1. 사용 방법</h2>
-<p>먼저 <a href="http://oky5710.dothome.co.kr/js/d3.v4.min.js">d3.v4.min.js</a>와 <a href="http://oky5710.dothome.co.kr/js/okyChart.js">okyChart.js</a>, <a href="http://oky5710.dothome.co.kr/css/okyChart.css">okyChart.css</a>(툴팁용 CSS)를 다운(<a href="http://oky5710.dothome.co.kr/drawChart.zip">전체 download</a>) 받아 사이트에 추가한다.</p>
-<pre><link rel="stylesheet" href="/css/okyChart.css">
+<p>먼저 JQuery, javafSlder.js, javafslider.css를 추가한다.</p>
+<pre>
+<link rel="stylesheet" href="/css/okyChart.css">
 <script src="/js/d3.v4.min.js"></script> 
 <script src="/js/okyChart.js"></script></pre>
 <p>차트를 추가할 위치에 div를 아래와 같이 추가한다.</p>
