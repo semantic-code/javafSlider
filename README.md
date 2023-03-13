@@ -50,4 +50,9 @@
 |divId|String|-|슬라이드가 들어가는 tag의 id|
 |interval|Number|3000|슬라이더간의 이동 간격|
 |animation|String|slide|slide: slide, fade : fade|
+
+## 3.사용예
+~~~
+- [셈플코드](http:http://javaf.kr/inc/test/_test_javafslider.php)
+~~~
   
