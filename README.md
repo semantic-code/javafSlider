@@ -29,7 +29,7 @@
 - html markup
 ```html
 <div id="first-slider">
-  <div class="inner-box">
+  <div class="items">
       <div class="item">
           <p>slider 1</p>         
       </div>
