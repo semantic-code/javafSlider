@@ -1,18 +1,11 @@
 @charset "UTF-8";
 
+/**animation: slide일 때 (기본값)**/
 .javaf-slider{position: relative; width : 100%; height: 500px;}
 .javaf-slider .items{overflow: hidden; position: absolute; left: 0; top: 0; width: 100%; height: 500px;}
 .javaf-slider .items .item{flex-direction: column; align-items: center; justify-content: center;position: absolute; top: 0; width: 100%; height: 500px;}
 .javaf-slider.slide .items .item{left: 100%;}
 .javaf-slider.slide .items .item:nth-child(1){left: 0}
 
+/**animation: fade일 때**/
 .javaf-slider.fade .items .item{display: none; left: 0;}
-.javaf-slider.slide .items .active{}
-
-/*.javaf-slider .items .item.active{display: flex;}*/
-.javaf-slider .items .slide-text{margin-bottom: 2.5rem; font-size: 2.2rem; text-align: center; font-weight: bold; line-height: 4rem;}
-.javaf-slider .items .text{display: none; font-size: 1.3rem;}
-
-.javaf-slider .slide-btn{display: flex; justify-content: center; align-items: center; gap: .5rem; position: absolute; left: 0; bottom: 0; width: 100%; height: 40px;}
-.javaf-slider .slide-btn > button{width: 50px; height: 10px; border: none;}
-.javaf-slider .slide-btn > button.active{background: #4D6C8B;}
