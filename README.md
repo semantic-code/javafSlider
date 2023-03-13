@@ -53,5 +53,5 @@
 
 ## 3.사용예
 
-- [사용예 (javaf.kr)] : http://javaf.kr/inc/test/_test_javafslider.php
+- [링크 설명 텍스트](링크주소){: target="_blank"} [구글 웹싸이트 가기](http://google.com){: target="_blank"}
   
