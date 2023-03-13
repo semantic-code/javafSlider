@@ -53,5 +53,5 @@
 
 ## 3.사용예
 
-- [링크 설명 텍스트](링크주소){: target="_blank"} [구글 웹싸이트 가기](http://google.com){: target="_blank"}
+- [사용 예](http://javaf.kr/inc/test/_test_javafslider.php){:target="_blank"}
   
