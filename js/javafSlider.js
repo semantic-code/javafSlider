@@ -17,6 +17,7 @@ javafSlider.prototype = {
         _this.interval = interval ? interval : 3000;
         _this.animation = animation ? animation : 'slide';
         _this.current = 0;
+        _this.setIntervalId = undefined;
 
         _this.$div.addClass('javaf-slider').addClass(_this.animation);
 
@@ -24,8 +25,7 @@ javafSlider.prototype = {
             _this.$div.find('.item').eq(0).addClass('active').fadeIn(0);
         }
 
-
-        var setIntervalId = setInterval(function(){
+        _this.setIntervalId = setInterval(function(){
             var next = _this.current +1;
             if(next == _this.$div.find('.item').length) next = 0;
 
