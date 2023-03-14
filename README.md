@@ -2,7 +2,7 @@
 
 
 - 슬라이드를 구현할 수 있는 JQuery Library
-- smaple 제공
+- sample 제공
 
 ## 1. 사용방법
 
