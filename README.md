@@ -53,5 +53,5 @@
 
 ## 3.사용예
 
-- [사용 예(javaf.kr)](http://javaf.kr/temp/javaf_slider/_sample/index.html)
+- [사용 예(javaf.kr)](http://javaf.kr/temp/javaf_slider/_sample/sample.html)
   
