@@ -48,7 +48,7 @@
 |속성|유형|기본값|설명|
 |:---|:---|:---|:---|
 |divId|String|-|슬라이드가 들어가는 tag의 id|
-|interval|Number|3000|슬라이더간의 이동 간격|
+|interval|Number|3000|슬라이더간의 이동 간격 (1/1000초)|
 |animation|String|slide|slide: slide, fade : fade|
 
 ## 3.사용예
