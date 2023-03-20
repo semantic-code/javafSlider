@@ -1,38 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>javaf-slider sample</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="./js/javafSlider.js"></script>
-	<link rel="stylesheet" href="./css/javafslider.css">
-    <script>
-        $(document).ready(function(){
-            javafSlider.start({
-                divId: "sample-slider",
-                interval: 4000,
-                animation: "fade"
-            });
-        });
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>javaf-slider sample</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="./js/javafSlider.js?ver=<?php echo date('ymdhis', time())?>"></script>
+<link rel="stylesheet" href="./css/javaf_slider_sample.css?ver=<?php echo date('ymdhis', time())?>">
+<script>
+$(document).ready(function(){
+	javafSlider.start({
+		divId: "sample-slider",
+		speed: 4000,
+		duration: 500,
+		animation: "",
+		direction: "",
+		isNavigation: true,
+        isArrowButton : true,
+		isPauseMouseOver : true
+	});
+});
 
-
-    </script>   
+</script>   
 </head>
 <body>
 <section>
     <div id="sample-slider">
         <div class="items">
             <div class="item">
-                <p>slide 1</p>
+                <img src="/img/slide01.jpg" alt="">
             </div>
             <div class="item">
-                <p>slide 2</p>
+                <img src="/img/slide02.jpg" alt="">
             </div>
             <div class="item">
-                <p>slide 3</p>
+                <img src="/img/slide03.jpg" alt="">
             </div>            
         </div>
     </div>
