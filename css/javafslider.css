@@ -1,11 +1,30 @@
 @charset "UTF-8";
 
-/**animation: slide일 때 (기본값)**/
-.javaf-slider{position: relative; width : 100%; height: 500px;}
-.javaf-slider .items{overflow: hidden; position: absolute; left: 0; top: 0; width: 100%; height: 500px;}
-.javaf-slider .items .item{flex-direction: column; align-items: center; justify-content: center;position: absolute; top: 0; width: 100%; height: 500px;}
-.javaf-slider.slide .items .item{left: 100%;}
-.javaf-slider.slide .items .item:nth-child(1){left: 0}
+.javaf-slider{position: relative; width : 1000px; height: 650px;}
+.javaf-slider .items{overflow: hidden; position: absolute; left: 0; top: 0; width: 100%; height: 650px;}
+.javaf-slider .items .item{flex-direction: column; align-items: center; justify-content: center;position: absolute; width: 100%; height: 500px;}
 
-/**animation: fade일 때**/
-.javaf-slider.fade .items .item{display: none; left: 0;}
+/** # animation: is_slide **/
+/** ## direction : left **/
+.javaf-slider.is_slide.slide_to_left .items .item{left: 100%; top: 0;}
+.javaf-slider.is_slide.slide_to_left .items .item:nth-child(1){left: 0;}
+/** ## direction : right **/
+.javaf-slider.is_slide.slide_to_right .items .item{left: -100%; top:0}
+.javaf-slider.is_slide.slide_to_right .items .item:nth-child(1){left: 0}
+/** ## direction : up **/
+.javaf-slider.is_slide.slide_to_up .items .item{left: 0; top: 100%;}
+.javaf-slider.is_slide.slide_to_up .items .item:nth-child(1){top: 0;}
+/** ## direction : down **/
+.javaf-slider.is_slide.slide_to_down .items .item{left: 0; top: -100%;}
+.javaf-slider.is_slide.slide_to_down .items .item:nth-child(1){top: 0;}
+
+/** is_fade **/
+.javaf-slider.is_fade .items .item{display: none; left: 0;}
+
+/**네비게이션 부분**/
+.javaf-slider .slide-navigation{display: flex; justify-content:  center; position: absolute; left: 0; bottom: 0; z-index: 9; width: 100%}
+.javaf-slider .slide-navigation > button{}
+.javaf-slider .slide-navigation > button.active{background: #F00;}
+
+.javaf-slider .btn-prev, .javaf-slider .btn-next{position: absolute; z-index: 9;}
+.javaf-slider .btn-next{right: 0;}
