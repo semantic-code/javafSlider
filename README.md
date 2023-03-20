@@ -49,7 +49,6 @@
 |:---|:---|:---|:---|
 |divId|String|-|슬라이드가 들어가는 tag의 id|
 |speed|Number|3000|슬라이더간의 이동 간격 (1/1000초)|
-|||||
 |duration|Number|1000|fade효과일 때 지속시간(1/10000초)|
 |animation|String|slide|슬라이드효과(slide, fade)|
 |direction|String|left|슬라이드 방향(left, right, up, down)|
