@@ -48,8 +48,14 @@
 |속성|유형|기본값|설명|
 |:---|:---|:---|:---|
 |divId|String|-|슬라이드가 들어가는 tag의 id|
-|interval|Number|3000|슬라이더간의 이동 간격 (1/1000초)|
-|animation|String|slide|slide: slide, fade : fade|
+|speed|Number|3000|슬라이더간의 이동 간격 (1/1000초)|
+|||||
+|duration|Number|1000|fade효과일 때 지속시간(1/10000초)|
+|animation|String|slide|슬라이드효과(slide, fade)|
+|direction|String|left|슬라이드 방향(left, right, up, down)|
+|isNavigation|String|false|Navigation Button 출력여부|
+|isArrowButton|Boolean|false|Arrow Button 출력여부|
+|isPauseMouseOver|Boolean|falue|슬라이드에 MouseOver 했을 때, 작동여부|
 
 ## 3.사용예
 
