@@ -14,7 +14,7 @@ ChkSlider.prototype = {
         var _this  = this;
 
 		_this.speed = speed || 1000;
-		_this.duration = duration || 2000;
+		_this.duration = duration || 1000;
         _this.animation = animation || "slide";
 		_this.direction = direction || "left";
         _this.isNavigation = isNavigation || false;
@@ -32,7 +32,7 @@ ChkSlider.prototype = {
         //css 적용을 위한 class 추가
 		_this.$div.addClass("javaf-slider").addClass("is_"+_this.animation);
 
-		//슬라이드 방향에 대한 class추가
+		//슬라이드 방향에 대한 class추가 
 		if(_this.direction == 'left'){
 			_this.$div.addClass("slide_to_left");
 		}else if(_this.direction == "right"){
@@ -53,7 +53,7 @@ ChkSlider.prototype = {
 		if(_this.isPauseMouseOver){
 			$("#" + _this.divId + " .items").on({
 				mouseover:function(){
-					clearInterval(_this.setIntervalId);
+					_this.stopSlide();
 				},
 				mouseout:function(){
 					_this.startInterval();
@@ -99,10 +99,11 @@ ChkSlider.prototype = {
     },
 	startInterval: function(){
 		var _this = this;
-		_this.setIntervalId = setInterval(function(){
-			_this.moveItem(_this.current + 1);
-		}, _this.speed);
-
+		if(_this.setIntervalId == undefined){
+			_this.setIntervalId = setInterval(function(){
+					_this.moveItem(_this.current + 1);
+			}, _this.speed);
+		}
 	},
 	moveItem: function(index,direction = null){
 		var _this = this;
@@ -176,11 +177,14 @@ ChkSlider.prototype = {
 	handleClick: function (index, direction = null){
 		var _this = this;
 
-		clearInterval(_this.setIntervalId);
+		_this.stopSlide();
+		console.log("_this.setIntervalId", _this.setIntervalId);
 		_this.moveItem(index, direction);
 		_this.startInterval();	
+	},
+	stopSlide: function(){
+		var _this = this;
+		clearInterval(_this.setIntervalId);
+		_this.setIntervalId = undefined;
 	}
-};
-
-
- 
+}; 
