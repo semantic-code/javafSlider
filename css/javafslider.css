@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 .javaf-slider{position: relative; width : 1000px; height: 650px;}
-.javaf-slider .items{overflow: hidden; position: absolute; left: 0; top: 0; width: 100%; height: 650px;}
-.javaf-slider .items .item{flex-direction: column; align-items: center; justify-content: center;position: absolute; width: 100%; height: 500px;}
+.javaf-slider .items{overflow: hidden; position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+.javaf-slider .items .item{flex-direction: column; align-items: center; justify-content: center;position: absolute; width: 100%; height: 100%;}
 
 /** # animation: is_slide **/
 /** ## direction : left **/
