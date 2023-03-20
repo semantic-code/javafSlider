@@ -177,8 +177,7 @@ ChkSlider.prototype = {
 	handleClick: function (index, direction = null){
 		var _this = this;
 
-		_this.stopSlide();
-		console.log("_this.setIntervalId", _this.setIntervalId);
+		_this.stopSlide();		
 		_this.moveItem(index, direction);
 		_this.startInterval();	
 	},
