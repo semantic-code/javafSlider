@@ -1,59 +1,186 @@
 function javafSlider(){}
 
 javafSlider.start = function (option){
-    var javaf_slider = new javafSlider(option);
-    return javaf_slider;
+    var chk_slider = new ChkSlider(option);
+    return chk_slider;
 }
 
-function javafSlider(option){     
+function ChkSlider(option){     
     this.init(option);
 }
 
-javafSlider.prototype = {
-    init: function({divId, isNav, interval, isAutoplay, animation}){
+ChkSlider.prototype = {
+    init: function({divId, speed, duration, animation, direction, isNavigation, isArrowButton, isPauseMouseOver}){
         var _this  = this;
+
+		_this.speed = speed || 1000;
+		_this.duration = duration || 2000;
+        _this.animation = animation || "slide";
+		_this.direction = direction || "left";
+        _this.isNavigation = isNavigation || false;
+		_this.isArrowButton = isArrowButton || false;
+		_this.isPauseMouseOver = isPauseMouseOver || false;
+
         _this.divId = divId;
         _this.$div = $("#" + divId);
-        _this.interval = interval ? interval : 3000;
-        _this.animation = animation ? animation : 'slide';
-        _this.current = 0;
-        _this.setIntervalId = undefined;
+		_this.$visual = _this.$div.find('.item');
+		_this.length = _this.$visual.length;        
 
-        _this.$div.addClass('javaf-slider').addClass(_this.animation);
+		_this.setIntervalId = undefined;
+		_this.current = 0;
 
+        //css 적용을 위한 class 추가
+		_this.$div.addClass("javaf-slider").addClass("is_"+_this.animation);
+
+		//슬라이드 방향에 대한 class추가
+		if(_this.direction == 'left'){
+			_this.$div.addClass("slide_to_left");
+		}else if(_this.direction == "right"){
+			_this.$div.addClass("slide_to_right");
+		}else if(_this.direction == "up"){
+			_this.$div.addClass("slide_to_up");
+		}else if(_this.direction == "down"){
+			_this.$div.addClass("slide_to_down");
+		}
+		_this.$div.find('.item').eq(_this.current).addClass('active');
+
+		//페이드효과일 때, 기본값이 display:none 이라 처음에 나타나지 않는 문제 해결
         if(_this.animation == "fade"){
-            _this.$div.find('.item').eq(0).addClass('active').fadeIn(0);
+            _this.$div.find('.item.active').fadeIn(0);
         }
 
-        _this.setIntervalId = setInterval(function(){
-            var next = _this.current +1;
-            if(next == _this.$div.find('.item').length) next = 0;
+		//마우스오버일 때,  효과 멈추기
+		if(_this.isPauseMouseOver){
+			$("#" + _this.divId + " .items").on({
+				mouseover:function(){
+					clearInterval(_this.setIntervalId);
+				},
+				mouseout:function(){
+					_this.startInterval();
+				}
+			});
+		}
 
-            if(_this.animation == 'fade'){
-                _this.fadeItem(next);
+        //네비게이션 생성
+		if(_this.isNavigation) {
+			_this.createNavigation();
+		}
 
-            }else{
-                _this.moveSlide(next);
-            }
-        }, _this.interval);
-},
-    moveSlide:function(next){
-        var _this = this;
-        var $visual = _this.$div.find('.item');
-        $visual.eq(_this.current).css({left: '0'}).stop().animate({left: '-100%'});
-        $visual.eq(next).css({left: '100%'}).stop().animate({left: '0'});
+		//setInterval start
+        _this.startInterval();
 
-        _this.current = next;
+		if(_this.isArrowButton){
+			_this.$div.append("<button class='btn-arrow btn-prev'>이전</button>");
+			_this.$div.append("<button class='btn-arrow btn-next'>다음</button>");
+
+			$(document).on("click", "#" + _this.divId + " .btn-next", function(){
+				_this.handleClick(_this.current +1);
+			});
+
+			$(document).on("click", "#" + _this.divId + " .btn-prev", function(){
+				var direction;
+				switch (_this.direction){
+					case "left" :
+						direction = 'right';
+						break;
+					case "right" :
+						direction = "left";
+						break;
+					case "up" :
+						direction = "down";
+						break;
+					case "down" :
+						direction = "up";
+				}
+
+				_this.handleClick(_this.current -1, direction);
+			});
+		}
     },
+	startInterval: function(){
+		var _this = this;
+		_this.setIntervalId = setInterval(function(){
+			_this.moveItem(_this.current + 1);
+		}, _this.speed);
+
+	},
+	moveItem: function(index,direction = null){
+		var _this = this;
+		if(_this.current == index) return false;
+
+		var currentIndex;
+
+		if(index < 0) {
+			currentIndex = _this.length - 1
+		} else if (index > _this.length - 1) {
+			currentIndex = 0;
+		} else {
+			currentIndex = index;
+		}
+
+		if(_this.animation == "slide"){
+			_this.slideItem(currentIndex, direction);
+		}else if(_this.animation == "fade"){
+			_this.fadeItem(currentIndex);
+		}
+
+		_this.$div.find("nav button").eq(currentIndex).addClass("active").siblings().removeClass("active");
+		_this.$visual.eq(currentIndex).addClass("active").siblings().removeClass("active");
+
+		_this.current = currentIndex;
+	},
+	slideItem: function(currentIndex, direction){
+		var _this = this;
+		var moveDirection = direction || _this.direction;
+
+		if(moveDirection == "left"){
+			_this.$visual.eq(_this.current).css({left: '0'}).stop().animate({left: '-100%'});
+			_this.$visual.eq(currentIndex).css({left: '100%'}).stop().animate({left: '0'});
+		}else if(moveDirection == "right"){
+			_this.$visual.eq(_this.current).css({left: '0'}).stop().animate({left: '100%'});
+			_this.$visual.eq(currentIndex).css({left: '-100%'}).stop().animate({left: '0'});
+		}else if(moveDirection == "up"){
+			_this.$visual.eq(_this.current).css({top: '0'}).stop().animate({top: '-100%'});
+			_this.$visual.eq(currentIndex).css({top: '100%'}).stop().animate({top: '0'});
+		}else if(moveDirection == "down"){
+			_this.$visual.eq(_this.current).css({top: '0'}).stop().animate({top: '100%'});
+			_this.$visual.eq(currentIndex).css({top: '-100%'}).stop().animate({top: '0'});
+		}
+	},
     fadeItem: function(next){
         var _this = this;
-        var $visual = _this.$div.find('.item');
+		
+		_this.$visual.eq(_this.current).fadeOut(_this.duration);
+	    _this.$visual.eq(next).fadeIn(_this.duration);
 
-        console.log(_this.current, next)
+    },
+    createNavigation: function(){
+        var _this = this;
 
-        $visual.eq(_this.current).removeClass('active').fadeOut(1000);
-        $visual.eq(next).addClass('active').fadeIn(1000);
+        _this.$div.append("<nav></nav>");
+		_this.$div.find("nav").addClass("slide-navigation");
 
-        _this.current = next;
-    }
+		for(i=0;i<_this.length;i++){
+			_this.$div.find("nav").append("<button>"+ (i+1) +"</button>");
+			_this.$div.find("nav").find("button").addClass("btn");
+			_this.$div.find("nav").find("button").eq(i).addClass("btn"+(i+1));
+			_this.$div.find("nav").find("button").eq(i).attr({"data-idx": (i+1)});
+		}
+
+		_this.$div.find('nav button').eq(_this.current).addClass('active');
+
+		$(document).on("click", "#" + _this.divId + " nav button", function(){
+			_this.handleClick($(this).index());
+		});
+    },
+	handleClick: function (index, direction = null){
+		var _this = this;
+
+		clearInterval(_this.setIntervalId);
+		_this.moveItem(index, direction);
+		_this.startInterval();	
+	}
 };
+
+
+ 
