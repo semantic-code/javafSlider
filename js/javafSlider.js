@@ -70,31 +70,7 @@ ChkSlider.prototype = {
         _this.startInterval();
 
 		if(_this.isArrowButton){
-			_this.$div.append("<button class='btn-arrow btn-prev'>이전</button>");
-			_this.$div.append("<button class='btn-arrow btn-next'>다음</button>");
-
-			$(document).on("click", "#" + _this.divId + " .btn-next", function(){
-				_this.handleClick(_this.current +1);
-			});
-
-			$(document).on("click", "#" + _this.divId + " .btn-prev", function(){
-				var direction;
-				switch (_this.direction){
-					case "left" :
-						direction = 'right';
-						break;
-					case "right" :
-						direction = "left";
-						break;
-					case "up" :
-						direction = "down";
-						break;
-					case "down" :
-						direction = "up";
-				}
-
-				_this.handleClick(_this.current -1, direction);
-			});
+			_this.createArrowButton();			
 		}
     },
 	startInterval: function(){
@@ -174,6 +150,35 @@ ChkSlider.prototype = {
 			_this.handleClick($(this).index());
 		});
     },
+	createArrowButton: function(){
+		var _this = this;
+
+		_this.$div.append("<button class='btn-arrow btn-prev'>이전</button>");
+		_this.$div.append("<button class='btn-arrow btn-next'>다음</button>");
+
+		$(document).on("click", "#" + _this.divId + " .btn-next", function(){
+			_this.handleClick(_this.current +1);
+		});
+
+		$(document).on("click", "#" + _this.divId + " .btn-prev", function(){
+			var direction;
+			switch (_this.direction){
+				case "left" :
+					direction = 'right';
+					break;
+				case "right" :
+					direction = "left";
+					break;
+				case "up" :
+					direction = "down";
+					break;
+				case "down" :
+					direction = "up";
+			}
+
+			_this.handleClick(_this.current -1, direction);
+		});
+	},
 	handleClick: function (index, direction = null){
 		var _this = this;
 
@@ -183,7 +188,11 @@ ChkSlider.prototype = {
 	},
 	stopSlide: function(){
 		var _this = this;
+		
 		clearInterval(_this.setIntervalId);
 		_this.setIntervalId = undefined;
 	}
-}; 
+};
+
+
+ 
