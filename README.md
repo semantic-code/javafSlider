@@ -15,15 +15,18 @@
 #### javascript에 divId와 html의 id는 동일해야 한다.
 - script tag
 ```javascript
-<script>
-  $(document).ready(function(){
-      javafSlider.start({
-          divId: "first-slider",
-          interval: 4000,
-          animation: "slide"
-      });
-  });
-</script>
+$(document).ready(function(){
+	javafSlider.start({
+		divId: "sample-slider",
+		speed: 3000,
+		duration: 500,
+		animation: "",
+		direction: "",
+		isNavigation: true,
+        isArrowButton : true,
+		isPauseMouseOver : true
+	});
+});
 ```
 
 - html markup
