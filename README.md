@@ -23,7 +23,7 @@ $(document).ready(function(){
 		animation: "",
 		direction: "",
 		isNavigation: true,
-        isArrowButton : true,
+		isArrowButton : true,
 		isPauseMouseOver : true
 	});
 });
