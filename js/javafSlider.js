@@ -193,3 +193,6 @@ ChkSlider.prototype = {
 		_this.setIntervalId = undefined;
 	}
 };
+
+
+ 
