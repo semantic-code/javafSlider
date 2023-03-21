@@ -54,7 +54,7 @@
 |direction|String|left|슬라이드 방향(left, right, up, down)|
 |isNavigation|String|false|Navigation Button 출력여부|
 |isArrowButton|Boolean|false|Arrow Button 출력여부|
-|isPauseMouseOver|Boolean|false|슬라이드에 MouseOver 했을 때, 작동여부|
+|isPauseMouseOver|Boolean|false|슬라이드에 MouseOver 했을 때, 멈춤여부|
 
 ## 3.사용예
 
