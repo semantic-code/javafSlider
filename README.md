@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 - html markup
 ```html
-<div id="first-slider">
+<div id="sample-slider">
   <div class="items">
       <div class="item">
           <p>slider 1</p>         
