@@ -48,6 +48,9 @@ ChkSlider.prototype = {
         if (_this.animation == "fade") {
             _this.$div.find('.item.active').fadeIn(0);
         }
+        
+        //슬라이드가 1개일때 return false
+        if( _this.length == 1 ) return false;
 
         //마우스오버일 때,  효과 멈추기
         if (_this.isPauseMouseOver) {
